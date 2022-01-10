@@ -30,13 +30,7 @@ For example, the tests require that to complete this challenge, your function mu
 results on the index page in the browser.
 */
 
-
-
-
-
-
-
-
+const sum = arr => arr.reduce((a, b) => a + b, 0);
 
 /*
 ----------------------------------------
@@ -48,14 +42,7 @@ Write function named doubleLetters that will take a string and double every lett
 Example: if you pass it "abc" then it should return "aabbcc"
 */
 
-
-
-
-
-
-
-
-
+const doubleLetters = str => str.split('').map(l => l + l).join('');
 
 /*
 ----------------------------------------
@@ -67,13 +54,7 @@ Write function named doubleNumbers that will take an array of numbers and return
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
 
-
-
-
-
-
-
-
+const doubleNumbers = arr => arr.map(n => n * 2);
 
 /*
 ----------------------------------------
@@ -89,14 +70,7 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
 
-
-
-
-
-
-
-
-
+const multiplyNumbers = (arr, n) => arr.map(a => a * n);
 
 /*
 ----------------------------------------
@@ -110,15 +84,15 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
+const interleave = (arr1, arr2) => {
+    var r = [];
+    for (var i = 0; i < arr1.length; i++) {
+        r.push(arr1[i]);
+        r.push(arr2[i]);
+    }
 
-
-
-
-
-
-
-
-
+    return r;
+}
 
 /*
 ----------------------------------------
@@ -130,12 +104,7 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
-
-
-
-
-
-
+const createRange = (n, str) => Array(n).fill(str);
 
 /*
 ----------------------------------------
@@ -149,12 +118,12 @@ Example:
 If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "brown": 1, "fox": 2 }
 */
 
+const flipArray = arr => {
+    var obj = {};
+    arr.forEach((a, i) => obj[a] = i);
 
-
-
-
-
-
+    return obj;
+}
 
 /*
 ----------------------------------------
@@ -169,13 +138,12 @@ If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: 
 
 */
 
+const arraysToObject = arr => {
+    var obj = {};
+    arr.forEach(a => obj[a[0]] = a[1]);
 
-
-
-
-
-
-
+    return obj;
+}
 
 /*
 ----------------------------------------
@@ -189,16 +157,12 @@ Example:
 If you pass it "hello" then it should return "olleh"
 */
 
+const reverseString = str => {
+    var r = '';
+    for (var i = str.length - 1; i >= 0; i--) r += str[i];
 
-
-
-
-
-
-
-
-
-
+    return r;
+}
 
 /*
 ----------------------------------------
@@ -214,12 +178,14 @@ If you pass it "yay" then it should return false because it's odd
 If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"
 */
 
+const repeats = str => {
+    if (str.length % 2 == 1) return false;
+    const h = str.length / 2;
+    const firstHalf = str.slice(0, h);
+    const secondHalf = str.slice(h);
 
-
-
-
-
-
+    return firstHalf == secondHalf;
+}
 
 /*
 ----------------------------------------
@@ -233,12 +199,7 @@ Example:
 If you pass it "abcdef" then it should return "ace" because those represent every other letter
 */
 
-
-
-
-
-
-
+const everyOther = str => str.split('').filter((e, i) => i % 2 == 0).join('');
 
 /*
 ----------------------------------------
@@ -253,12 +214,7 @@ If you pass "aaa" it should return true
 If you pass "aba" it should return false
 */
 
-
-
-
-
-
-
+const allEqual = str => !str.replaceAll(str[0], '').length;
 
 /*
 ----------------------------------------
@@ -273,12 +229,7 @@ If you pass "45" it should return 9
 If you pass "246" it should return 12
 */
 
-
-
-
-
-
-
+const sumLetters = str => str.split('').reduce((a, b) => a + parseInt(b), 0);
 
 /*
 ----------------------------------------
@@ -292,14 +243,7 @@ Example:
 If you pass "you" it should return 2
 */
 
-
-
-
-
-
-
-
-
+const countVowels = str => str.split('').filter(c => ['a', 'e', 'i', 'o', 'u'].includes(c)).length;
 
 /*
 ----------------------------------------
@@ -315,12 +259,12 @@ If you pass "you" it should return ["y", "o", "u"]
 NOTE: do not use the builtin `split` method
 */
 
+const split = str => {
+    var arr = [];
+    for (var i = 0; i < str.length; i++) arr.push(str[i]);
 
-
-
-
-
-
+    return arr;
+}
 
 /*
 ----------------------------------------
@@ -336,12 +280,7 @@ Example:
 If you pass "Hello" it should return [ 72, 101, 108, 108, 111 ]
 */
 
-
-
-
-
-
-
+const getCodePoints = str => str.split('').map(c => c.codePointAt());
 
 /*
 ----------------------------------------
@@ -356,12 +295,12 @@ If you pass "Yo" it should return {Y: 0, o: 1}
 If you pass "Hello" it should return {H: 0, e: 1, l: 3, o: 4}
 */
 
+const letterMap = str => {
+    const obj = {};
+    str.split('').forEach((c, i) => obj[c] = i);
 
-
-
-
-
-
+    return obj;
+}
 
 /*
 ----------------------------------------
@@ -376,13 +315,12 @@ If you pass "Yo" it should return {Y: 1, o: 1}
 If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}
 */
 
+const letterCount = str => {
+    var occurences = {};
+    str.split('').forEach(c => occurences[c] = 1 + (occurences[c] || 0));
 
-
-
-
-
-
-
+    return occurences;
+}
 
 /*
 ----------------------------------------
@@ -397,13 +335,7 @@ If you pass 0,3 it should return false because the only number between 0 and 3 i
 If you pass 0,6 it should return true because between 0 and six (the numbers 1,2,3,4,5) there are three odds - 1, 3 and 5
 */
 
-
-
-
-
-
-
-
+const threeOdds = (a, b) => b - a > 5;
 
 
 /*
@@ -418,12 +350,10 @@ Example:
 If you pass "a", 3, "*" it should return "**a" - that is, a string of length 3, padded on the left by the "*" character
 */
 
-
-
-
-
-
-
+const leftPad = (str, l, f) => {
+    const fill = l - str.length;
+    return fill > -1 ? (f.repeat(fill) + str) : str;
+}
 
 /*
 ----------------------------------------
@@ -438,12 +368,7 @@ If you pass "a", 3 it should return "aaa"
 If you pass "b", 3 it should return "bb"
 */
 
-
-
-
-
-
-
+const createString = (n, c) => n < 1 ? '' : c.repeat(n);
 
 /*
 ----------------------------------------
@@ -460,11 +385,14 @@ If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1
 If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1
 */
 
+const factorial = n => {
+    if (n == 0) return 1;
 
+    var f = n;
+    for (var i = n - 1; i > 1; i--) f *= i;
 
-
-
-
+    return f;
+}
 
 
 /*
@@ -480,12 +408,14 @@ If you pass 1 it should return [1]
 If you pass 3 it should return [1,2,3]
 */
 
+const arrayOfNumbers = n => {
+    if (n == 0) return [];
 
+    var arr = [1];
+    for (var i = 2; i <= n; i++) arr.push(i);
 
-
-
-
-
+    return arr;
+}
 
 /*
 ----------------------------------------
@@ -499,13 +429,14 @@ Example:
 If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "even"}
 */
 
+const evenOdd = (a, b) => {
+    if (a == 0 && b == 0) return {};
 
+    var r = {};
+    for (var i = a; i <= b; i++) r[i] = i % 2 ? 'odd' : 'even';
 
-
-
-
-
-
+    return r;
+}
 
 /*
 ----------------------------------------
@@ -519,14 +450,12 @@ Example:
 If you pass 2,"d" it should return {"d": true, "dd": true}
 */
 
+const growingKeys = (n, c) => {
+    var obj = {};
+    for (var i = 0; i < n; i++) obj[c.repeat(i + 1)] = true;
 
-
-
-
-
-
-
-
+    return obj;
+}
 
 /*
 ----------------------------------------
@@ -541,12 +470,12 @@ If you pass [1,1], 1 it should return true
 If you pass [1,2], 1 it should return false
 */
 
+const every = (arr, n) => {
+    if (!arr.length) return true;
 
-
-
-
-
-
+    const a = Array.from(new Set(arr));
+    return a.length == 1 && a[0] == n;
+}
 
 /*
 ----------------------------------------
@@ -561,12 +490,7 @@ If you pass [1,2], 1 it should return true
 If you pass [3,2], 1 it should return false
 */
 
-
-
-
-
-
-
+const some = (arr, n) => arr.includes(n);
 
 /*
 ----------------------------------------
@@ -581,17 +505,21 @@ If you pass ["Sue", "Will"] it should return "Sue and Will"
 If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 */
 
+const toSentence = arr => {
+    if (!arr.length) return '';
+    if (arr.length == 1) return arr[0];
 
+    var str1 = arr.slice(-2, -1) + ' and ' + arr.slice(-1);
+    if (arr.length == 2) return str1;
 
+    var str2 = arr[0] + ', ';
 
+    for (var i = 1; i < arr.length - 2; i++) {
+        str2 += arr[i] + ', ';
+    }
 
-
-
-
-
-
-
-
+    return str2 + str1;
+}
 
 /*
 ----------------------------------------
@@ -606,12 +534,7 @@ If you pass ["Sue", "Will"] it should return "SW"
 If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 */
 
-
-
-
-
-
-
+const acronym = arr => arr.map(str => str[0]).join('');
 
 /*
 ----------------------------------------
@@ -625,15 +548,7 @@ Example:
 If you pass [0,-3,2,5] it should return -3
 */
 
-
-
-
-
-
-
-
-
-
+const min = arr => arr.reduce((a, b) => (b < a || a == undefined) ? b : a, undefined);
 
 /*
 ----------------------------------------
@@ -648,12 +563,12 @@ If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {i
 
 */
 
+const index = arr => {
+    var obj = {};
+    arr.forEach((o, i) => obj[o[Object.keys(o)[0]]] = o);
 
-
-
-
-
-
+    return obj;
+}
 
 /*
 ----------------------------------------
@@ -667,12 +582,17 @@ Example:
 If you pass {id: 1, name: "Joe"} it should return {1: "id", Joe: "name"}
 */
 
+const invert = obj => {
+    var keys = Object.keys(obj);
+    var o = {};
 
+    for (var i = 0; i < keys.length; i++) {
+        const k = keys[i];
+        o[obj[k]] = k;
+    }
 
-
-
-
-
+    return o;
+}
 
 /*
 ----------------------------------------
@@ -689,12 +609,14 @@ Example:
 If you pass {"contract": "foo"}, "Fred" it should return {"contract-signed": "foo - Fred"}
 */
 
+const addSignature = (name, obj) => {
+    if (!obj) return {};
 
+    var o = {};
+    Object.keys(obj).forEach(k => o[k + '-signed'] = obj[k] + ' - ' + name);
 
-
-
-
-
+    return o;
+}
 
 /*
 ----------------------------------------
@@ -708,12 +630,7 @@ Example:
 If you pass {name: "Will", age: 24} it should return ["name - will", "age - 24"]
 */
 
-
-
-
-
-
-
+const pairs = obj => Object.keys(obj).map(k => k + ' - ' + obj[k]);
 
 /*
 ----------------------------------------
@@ -727,12 +644,7 @@ Example:
 If you pass {a: 1, b: 2} it should return 3
 */
 
-
-
-
-
-
-
+const sumValues = obj => Object.keys(obj).reduce((a, b) => a + obj[b], 0);
 
 /*
 ----------------------------------------
@@ -746,18 +658,18 @@ Example:
 If you pass {1999: 4036, 2000: 7654} it should return '2000'
 */
 
+const biggestProperty = obj => {
+    var max = undefined;
+    var key = undefined;
+    for (const [k, v] of Object.entries(obj)) {
+        if (v > max || max == undefined) {
+            max = v;
+            key = k;
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    return key;
+}
 
 /*
 ----------------------------------------
@@ -771,14 +683,7 @@ Example:
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return '1999'
 */
 
-
-
-
-
-
-
-
-
+const keyForValue = (obj, v) => (Object.entries(obj).find(e => e[1] == v) || [undefined])[0];
 
 /*
 ----------------------------------------
@@ -792,12 +697,6 @@ Example:
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 */
 
-
-
-
-
-
-
-
+const containsValue = (obj, v) => Object.entries(obj).find(e => e[1] == v) != undefined;
 
 //
